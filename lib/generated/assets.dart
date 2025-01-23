@@ -11,6 +11,7 @@ class Assets {
   static const String imagesImageAppNameOnboarding = 'assets/images/image_app_name_onboarding.png';
   static const String imagesImageCommonBg = 'assets/images/image_common_bg.png';
   static const String imagesImageCross = 'assets/images/image_cross.png';
+  static const String imagesImageDropDownBlack = 'assets/images/image_drop_down_black.png';
   static const String imagesImageDropDownCountryCode = 'assets/images/image_drop_down_country_code.png';
   static const String imagesImageEmail = 'assets/images/image_email.png';
   static const String imagesImageEye = 'assets/images/image_eye.png';

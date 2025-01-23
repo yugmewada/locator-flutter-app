@@ -1,3 +1,4 @@
+import 'package:demo/Common.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
 import 'package:demo/theming/TextStyles.dart';
@@ -52,7 +53,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           welcomeScreenOptions(
                               label: "Login with Mobile",
                               imageAsset: Assets.imagesImageMobile,
-                              onClick: () => print("object login")),
+                              onClick: () => {
+                                    Navigator.of(context)
+                                        .pushNamed(Common.mobileLogin)
+                                  }),
                           Divider(
                             height: 1.h,
                             thickness: 1.h,
@@ -61,11 +65,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           welcomeScreenOptions(
                               label: "Login with Email",
                               imageAsset: Assets.imagesImageEmail,
-                              onClick: () => print("object email")),
+                              onClick: () => {
+                                    Navigator.of(context)
+                                        .pushNamed(Common.emailLogin)
+                                  }),
                           createAccountOptions(
                               onClick: () => {
                                     Navigator.of(context)
-                                        .pushNamed("/create_acc")
+                                        .pushNamed(Common.createAccount)
                                   })
                         ],
                       ),

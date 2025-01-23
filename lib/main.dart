@@ -1,5 +1,8 @@
+import 'package:demo/Common.dart';
 import 'package:demo/theming/AppColor.dart';
 import 'package:demo/ui/auth/create_account_screen.dart';
+import 'package:demo/ui/auth/email_login_screen.dart';
+import 'package:demo/ui/auth/mobile_login_screen.dart';
 import 'package:demo/ui/auth/select_language_screen.dart';
 import 'package:demo/ui/auth/walkthrough_screen.dart';
 import 'package:demo/ui/auth/weclome_screen.dart';
@@ -37,20 +40,14 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => const SplashScreen(),
-          '/language_selection': (context) => const SelectLanguageScreen(),
-          '/onboarding': (context) => WalkthroughScreen(),
-          '/welcome': (context) => const WelcomeScreen(),
-          '/create_acc': (context) => const CreateAccountScreen()
+          Common.languageSelection: (context) => const SelectLanguageScreen(),
+          Common.onboarding: (context) => WalkthroughScreen(),
+          Common.welcome: (context) => const WelcomeScreen(),
+          Common.createAccount: (context) => const CreateAccountScreen(),
+          Common.mobileLogin: (context) => const MobileLoginScreen(),
+          Common.emailLogin: (context) => const EmailLoginScreen(),
         },
       ),
     );
-
-    /*return ScreenUtilInit(
-      designSize: Size(390, 844),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SelectLanguageScreen(),
-      ),
-    );*/
   }
 }

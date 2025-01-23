@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'AppColor.dart';
 
@@ -15,7 +16,7 @@ class TextStyles {
   }
 
   static TextStyle mediumWhite16() {
-    return mediumWhite().copyWith(fontSize: 16);
+    return mediumWhite().copyWith(fontSize: 16.spMin);
   }
 
   static TextStyle mediumColorDarkBlue() {
@@ -23,15 +24,15 @@ class TextStyles {
   }
 
   static TextStyle mediumColorDarkBlue16() {
-    return mediumColorDarkBlue().copyWith(fontSize: 16);
+    return mediumColorDarkBlue().copyWith(fontSize: 16.spMin);
   }
 
   static TextStyle mediumColorWhite16() {
-    return mediumWhite16().copyWith(fontSize: 16);
+    return mediumWhite16().copyWith(fontSize: 16.spMin);
   }
 
   static TextStyle mediumColorDarkBlue14() {
-    return mediumColorDarkBlue().copyWith(fontSize: 14);
+    return mediumColorDarkBlue().copyWith(fontSize: 14.spMin);
   }
 
   //Bold Font Styles
@@ -48,11 +49,11 @@ class TextStyles {
   }
 
   static TextStyle boldDarkBlue18() {
-    return boldColorDarkBlue().copyWith(fontSize: 18);
+    return boldColorDarkBlue().copyWith(fontSize: 18.spMin);
   }
 
   static TextStyle boldDarkBlue24() {
-    return boldColorDarkBlue().copyWith(fontSize: 24);
+    return boldColorDarkBlue().copyWith(fontSize: 24.spMin);
   }
 
   //Normal Font Styles
@@ -77,14 +78,14 @@ class TextStyles {
   }
 
   static TextStyle normalFontGrey16() {
-    return normalFontGrey().copyWith(fontSize: 16);
+    return normalFontGrey().copyWith(fontSize: 16.spMin);
   }
 
   static TextStyle normalFontGrey2_14() {
-    return normalFontGrey2().copyWith(fontSize: 14);
+    return normalFontGrey2().copyWith(fontSize: 14.spMin);
   }
 
   static TextStyle normalFontGreyHint_14() {
-    return normalFontGreyHint().copyWith(fontSize: 14);
+    return normalFontGreyHint().copyWith(fontSize: 14.spMin);
   }
 }

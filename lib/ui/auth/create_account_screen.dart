@@ -1,6 +1,7 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
+import 'package:demo/base/base_app_bar.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
 import 'package:demo/theming/TextStyles.dart';
@@ -31,6 +32,15 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
   ValueNotifier<Country> selectedCountryFlag =
       ValueNotifier<Country>(CountryPickerUtils.getCountryByIsoCode("IN"));
 
+  @override
+  void dispose() {
+    super.dispose();
+    mobileNumberController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+  }
+
   void _toggleShowPassword() {
     setState(() {
       showPassword = !showPassword;
@@ -58,22 +68,12 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
         body: SingleChildScrollView(
             child: Column(
           children: [
-            Row(
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 48),
-                    child: GestureDetector(
-                        child: SizedBox(
-                          child: Image.asset(
-                            Assets.imagesImageCross,
-                            width: 20,
-                            height: 20,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.pop(context);
-                        }))
-              ],
+            BaseAppBar(
+              leadingIcon: true,
+              backAction: () {
+                FocusScope.of(context).unfocus();
+                Navigator.pop(context);
+              },
             ),
             Column(
               children: [
@@ -171,27 +171,9 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
           GestureDetector(
             onTap: () {
               _openCountryPickerDialog();
-              /*showCountryPicker(
-                context: context,
-                showPhoneCode: true,
-                onSelect: (Country country) {
-                  selectedCountryFlag.value = country.flagEmoji;
-                  selectedCountryCode.value = "+${country.phoneCode}";
-                },
-              );*/
             },
             child: Row(
               children: [
-                /*SizedBox(
-                  //height: 50,
-                  //width: 50,
-                  child: ValueListenableBuilder<String>(
-                    valueListenable: selectedCountryFlag,
-                    builder: (context, flagUri, child) {
-                      return Text(flagUri);
-                    },
-                  ),
-                ),*/
                 Image.asset(
                   CountryPickerUtils.getFlagImageAssetPath(
                       selectedCountryFlag.value.isoCode),
