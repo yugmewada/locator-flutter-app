@@ -2,18 +2,22 @@ import 'package:demo/base/base_app_bar.dart';
 import 'package:demo/theming/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 
 import '../../generated/assets.dart';
 import '../../theming/TextStyles.dart';
+import '../../ui/auth/bottomsheet/forgot_password_bottom_sheet.dart';
 
 class EmailLoginScreen extends StatefulWidget {
   const EmailLoginScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => _EmailLoginScreenState();
+  State<EmailLoginScreen> createState() => _EmailLoginScreenState();
 }
 
-class _EmailLoginScreenState extends State<StatefulWidget> {
+class _EmailLoginScreenState extends State<EmailLoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final ValueNotifier<bool> passwordToggleNotifier = ValueNotifier(false);
@@ -58,6 +62,7 @@ class _EmailLoginScreenState extends State<StatefulWidget> {
                     ],
                   ),
                 ),
+                _buildForgotPassAndLoginButton()
               ],
             ),
           ))
@@ -104,7 +109,7 @@ class _EmailLoginScreenState extends State<StatefulWidget> {
       builder: (context, boolean, child) {
         return Padding(
             padding:
-            const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
+                const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 10),
             child: Row(
               children: [
                 Expanded(
@@ -147,13 +152,55 @@ class _EmailLoginScreenState extends State<StatefulWidget> {
             labelStyle: TextStyles.normalFontGreyHint_14()));
   }
 
+  Widget _buildForgotPassAndLoginButton() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            GestureDetector(
+              onTap: () => {
+                showCupertinoModalBottomSheet(
+                  context: context,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20))),
+                  builder: (context) {
+                    return SizedBox(
+                      height: 0.6.sh,
+                      child: const ForgotPasswordBottomSheet(),
+                    );
+                  },
+                )
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20, right: 20),
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyles.normalFontGrey16(),
+                ),
+              ),
+            )
+          ],
+        ),
+        GestureDetector(
+          onTap: () => {
+            ToastService.showSuccessToast(context,
+                message: "Test", dismissDirection: DismissDirection.up)
+          },
+          child: _buildButton(),
+        )
+      ],
+    );
+  }
+
 //------------------------------------------------------------------------------
-  //BUTTON
+  //BUTTON AND HEADER
 //------------------------------------------------------------------------------
 
   Widget _buildButton() {
     return Padding(
-      padding: const EdgeInsets.only(top: 30, bottom: 30),
+      padding: const EdgeInsets.symmetric(vertical: 40),
       child: Container(
         height: 52.h,
         width: 170.h,
@@ -162,7 +209,7 @@ class _EmailLoginScreenState extends State<StatefulWidget> {
             borderRadius: BorderRadius.circular(26.h)),
         child: Center(
           child: Text(
-            "Get OTP",
+            "Login",
             style: TextStyles.mediumWhite16(),
           ),
         ),
@@ -191,4 +238,8 @@ class _EmailLoginScreenState extends State<StatefulWidget> {
       ],
     );
   }
+
+//------------------------------------------------------------------------------
+//BUTTON AND HEADER
+//------------------------------------------------------------------------------
 }

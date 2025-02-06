@@ -74,17 +74,20 @@ class _SelectLanguageScreen extends State<SelectLanguageScreen> {
                 await prefs.setBool(Common.IS_LANGUAGE_SELECTED, true);
                   Navigator.of(context).popAndPushNamed("/onboarding");
               },
-              child: Container(
-                width: 170.h,
-                height: 52.h,
-                margin: const EdgeInsets.only(top: 20, bottom: 30),
-                decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: BorderRadius.circular(26.h)),
-                child: Center(
-                  child: Text(
-                    "Submit",
-                    style: TextStyles.mediumWhite16(),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Container(
+                  width: 170.h,
+                  height: 52.h,
+                  margin: const EdgeInsets.only(top: 20, bottom: 30),
+                  decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      borderRadius: BorderRadius.circular(26.h)),
+                  child: Center(
+                    child: Text(
+                      "Submit",
+                      style: TextStyles.mediumWhite16(),
+                    ),
                   ),
                 ),
               ),

@@ -88,4 +88,22 @@ class TextStyles {
   static TextStyle normalFontGreyHint_14() {
     return normalFontGreyHint().copyWith(fontSize: 14.spMin);
   }
+
+//Semibold Font Styles
+
+  static TextStyle semiBoldFont() {
+    return const TextStyle(
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle semiBoldColorDarkBlue() {
+    return semiBoldFont().copyWith(color: AppColor.primaryColor);
+  }
+
+  static TextStyle semiBoldColorDarkBlue22() {
+    return semiBoldColorDarkBlue().copyWith(fontSize: 22.spMin);
+  }
+
 }
