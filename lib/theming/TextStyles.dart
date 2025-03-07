@@ -27,12 +27,12 @@ class TextStyles {
     return mediumColorDarkBlue().copyWith(fontSize: 16.spMin);
   }
 
-  static TextStyle mediumColorWhite16() {
-    return mediumWhite16().copyWith(fontSize: 16.spMin);
-  }
-
   static TextStyle mediumColorDarkBlue14() {
     return mediumColorDarkBlue().copyWith(fontSize: 14.spMin);
+  }
+
+  static TextStyle mediumColorWhite16() {
+    return mediumWhite16().copyWith(fontSize: 16.spMin);
   }
 
   //Bold Font Styles

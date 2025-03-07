@@ -2,8 +2,10 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:demo/theming/AppColor.dart';
+import 'package:demo/ui/auth/bottomsheet/otp_verification_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../../base/base_app_bar.dart';
 import '../../generated/assets.dart';
@@ -169,18 +171,34 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
 //------------------------------------------------------------------------------
 
   Widget _buildButton() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30, bottom: 30),
-      child: Container(
-        height: 52.h,
-        width: 170.h,
-        decoration: BoxDecoration(
-            color: AppColor.primaryColor,
-            borderRadius: BorderRadius.circular(26.h)),
-        child: Center(
-          child: Text(
-            "Get OTP",
-            style: TextStyles.mediumWhite16(),
+    return GestureDetector(
+      onTap: () {
+        showCupertinoModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return SizedBox(
+              height: 0.6.sh,
+              child: const OtpVerificationBottomSheet(),
+            );
+          },
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30, bottom: 30),
+        child: Container(
+          height: 52.h,
+          width: 170.h,
+          decoration: BoxDecoration(
+              color: AppColor.primaryColor,
+              borderRadius: BorderRadius.circular(26.h)),
+          child: Center(
+            child: Text(
+              "Get OTP",
+              style: TextStyles.mediumWhite16(),
+            ),
           ),
         ),
       ),

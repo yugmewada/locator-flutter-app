@@ -286,7 +286,7 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
             )),
         Expanded(
             child: Padding(
-          padding: const EdgeInsets.only(top: 16),
+          padding: const EdgeInsets.only(top: 16, right: 10),
           child: RichText(
               text: TextSpan(
                   text: "By continuing, you agree to the ",

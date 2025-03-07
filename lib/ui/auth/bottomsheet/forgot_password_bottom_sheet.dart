@@ -107,7 +107,10 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: () => isPhoneSelected.value = false,
+          onTap: () => {
+            isPhoneSelected.value = false,
+            mobileNumberController.text = ""
+          },
           child: ValueListenableBuilder<bool>(
               valueListenable: isPhoneSelected,
               builder: (context, isEmailSelected, child) {
@@ -133,7 +136,10 @@ class _ForgotPasswordBottomSheetState extends State<ForgotPasswordBottomSheet> {
               }),
         ),
         GestureDetector(
-          onTap: () => isPhoneSelected.value = true,
+          onTap: () => {
+            isPhoneSelected.value = true,
+            emailController.text = ""
+          },
           child: ValueListenableBuilder<bool>(
             valueListenable: isPhoneSelected,
             builder: (context, isPhSelected, child) {

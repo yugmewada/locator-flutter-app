@@ -3,8 +3,6 @@ import 'package:demo/theming/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:toasty_box/toast_enums.dart';
-import 'package:toasty_box/toast_service.dart';
 
 import '../../generated/assets.dart';
 import '../../theming/TextStyles.dart';
@@ -185,8 +183,9 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
         ),
         GestureDetector(
           onTap: () => {
-            ToastService.showSuccessToast(context,
-                message: "Test", dismissDirection: DismissDirection.up)
+
+
+
           },
           child: _buildButton(),
         )
