@@ -178,7 +178,9 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
           builder: (context) {
             return SizedBox(
               height: 0.6.sh,
-              child: const OtpVerificationBottomSheet(),
+              child: OtpVerificationBottomSheet(onOtpVerified: () {
+                debugPrint("OTP Verified");
+              }),
             );
           },
           shape: const RoundedRectangleBorder(
