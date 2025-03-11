@@ -8,6 +8,9 @@ class Assets {
   static const String fontPoppinsMedium = 'assets/font/poppins_medium.ttf';
   static const String fontPoppinsRegular = 'assets/font/poppins_regular.ttf';
   static const String fontPoppinsSemiBold = 'assets/font/poppins_semi_bold.ttf';
+  static const String imagesIcAddressPinAuth = 'assets/images/ic_address_pin_auth.png';
+  static const String imagesIcCamera = 'assets/images/ic_camera.png';
+  static const String imagesIcSuccessSignup = 'assets/images/ic_success_signup.gif';
   static const String imagesImageAppNameOnboarding = 'assets/images/image_app_name_onboarding.png';
   static const String imagesImageCommonBg = 'assets/images/image_common_bg.png';
   static const String imagesImageCross = 'assets/images/image_cross.png';

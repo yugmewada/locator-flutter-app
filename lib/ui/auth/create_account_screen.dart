@@ -1,6 +1,7 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
+import 'package:demo/Common.dart';
 import 'package:demo/base/base_app_bar.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
@@ -121,18 +122,23 @@ class _CreateAccountScreen extends State<CreateAccountScreen> {
   }
 
   Widget _buildButton() {
-    return Padding(
-      padding: EdgeInsets.only(top: 63.h, bottom: 20.h),
-      child: Container(
-        height: 52.h,
-        width: 170.h,
-        decoration: BoxDecoration(
-            color: AppColor.primaryColor,
-            borderRadius: BorderRadius.circular(26.h)),
-        child: Center(
-          child: Text(
-            "Create",
-            style: TextStyles.mediumWhite16(),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(Common.completeProfile);
+      },
+      child: Padding(
+        padding: EdgeInsets.only(top: 63.h, bottom: 20.h),
+        child: Container(
+          height: 52.h,
+          width: 170.h,
+          decoration: BoxDecoration(
+              color: AppColor.primaryColor,
+              borderRadius: BorderRadius.circular(26.h)),
+          child: Center(
+            child: Text(
+              "Create",
+              style: TextStyles.mediumWhite16(),
+            ),
           ),
         ),
       ),

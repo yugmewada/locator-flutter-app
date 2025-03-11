@@ -1,5 +1,6 @@
 import 'package:demo/Common.dart';
 import 'package:demo/theming/AppColor.dart';
+import 'package:demo/ui/auth/complete_profile_screen.dart';
 import 'package:demo/ui/auth/create_account_screen.dart';
 import 'package:demo/ui/auth/email_login_screen.dart';
 import 'package:demo/ui/auth/mobile_login_screen.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
           Common.createAccount: (context) => const CreateAccountScreen(),
           Common.mobileLogin: (context) => const MobileLoginScreen(),
           Common.emailLogin: (context) => const EmailLoginScreen(),
+          Common.completeProfile: (context) => const CompleteProfileScreen(),
         },
       ),
     );

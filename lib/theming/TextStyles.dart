@@ -77,6 +77,12 @@ class TextStyles {
         .copyWith(fontSize: 16.spMin);
   }
 
+  static TextStyle normalFontGrey14() {
+    return normalFont()
+        .copyWith(color: AppColor.colorGrey)
+        .copyWith(fontSize: 14.spMin);
+  }
+
   static TextStyle normalFontGrey2_14() {
     return normalFont()
         .copyWith(color: AppColor.colorGrey2)

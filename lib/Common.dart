@@ -9,4 +9,5 @@ class Common {
   static const String welcome = "/welcome";
   static const String onboarding = "/onboarding";
   static const String languageSelection = "/language_selection";
+  static const String completeProfile = "/CompleteProfileScreen";
 }

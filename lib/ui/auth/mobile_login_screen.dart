@@ -2,6 +2,7 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:demo/theming/AppColor.dart';
+import 'package:demo/ui/auth/bottomsheet/auth_success_bottomsheet.dart';
 import 'package:demo/ui/auth/bottomsheet/otp_verification_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -173,20 +174,7 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
   Widget _buildButton() {
     return GestureDetector(
       onTap: () {
-        showCupertinoModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return SizedBox(
-              height: 0.6.sh,
-              child: OtpVerificationBottomSheet(onOtpVerified: () {
-                debugPrint("OTP Verified");
-              }),
-            );
-          },
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-        );
+        _showBottomSheet();
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 30, bottom: 30),
@@ -205,6 +193,43 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
         ),
       ),
     );
+  }
+
+  void _showBottomSheet() {
+    showCupertinoModalBottomSheet(
+      context: context,
+      expand: false,
+      builder: (context) {
+        return SizedBox(
+          height: 0.55.sh,
+          child: OtpVerificationBottomSheet(onOtpVerified: () {
+            Future.delayed(const Duration(milliseconds: 500), () {
+              _showSuccessBottomSheet();
+            });
+          }),
+        );
+      },
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    );
+  }
+
+  void _showSuccessBottomSheet() {
+    showCupertinoModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (context) {
+          return SizedBox(
+            height: 0.4.sh,
+            child: AuthSuccessBottomSheet(onContinueClick: () {
+              
+            }),
+          );
+        },
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))));
   }
 
 //------------------------------------------------------------------------------

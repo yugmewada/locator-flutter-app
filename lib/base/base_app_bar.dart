@@ -18,6 +18,7 @@ class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
   Widget? leadingWidget;
   Color? leadingWidgetColor;
   Color? titleWidgetColor;
+  Color? statusBarColor;
 
   BaseAppBar({
     super.key,
@@ -33,6 +34,7 @@ class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.leadingWidget,
     this.leadingWidgetColor,
     this.titleWidgetColor,
+    this.statusBarColor = AppColor.colorScreenBg,
     this.preferredSize = const Size.fromHeight(kToolbarHeight),
   }) : assert(
           title == null || titleWidget == null,
@@ -50,8 +52,8 @@ class _BaseAppBarState extends State<BaseAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: AppColor.colorScreenBg, // Status bar
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: widget.statusBarColor
       ),
       scrolledUnderElevation: 0,
       centerTitle: widget.centerTitle,
