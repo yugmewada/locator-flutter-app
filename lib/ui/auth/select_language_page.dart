@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:demo/Common.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
@@ -6,19 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SelectLanguageScreen extends StatefulWidget {
-  const SelectLanguageScreen({super.key});
+@RoutePage()
+class SelectLanguagePage extends StatefulWidget {
+  const SelectLanguagePage({super.key});
 
   @override
-  State<SelectLanguageScreen> createState() => _SelectLanguageScreen();
+  State<SelectLanguagePage> createState() => _SelectLanguageState();
 }
 
-class _SelectLanguageScreen extends State<SelectLanguageScreen> {
+class _SelectLanguageState extends State<SelectLanguagePage> {
   var selectedLanguage = 1;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColor.colorScreenBg,
       body: SingleChildScrollView(
@@ -72,7 +73,7 @@ class _SelectLanguageScreen extends State<SelectLanguageScreen> {
               onTap: () async {
                 final prefs = await SharedPreferences.getInstance();
                 await prefs.setBool(Common.IS_LANGUAGE_SELECTED, true);
-                  Navigator.of(context).popAndPushNamed("/onboarding");
+                Navigator.of(context).popAndPushNamed("/onboarding");
               },
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20),

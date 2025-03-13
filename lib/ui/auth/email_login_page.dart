@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:demo/base/base_app_bar.dart';
 import 'package:demo/theming/AppColor.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,15 @@ import '../../generated/assets.dart';
 import '../../theming/TextStyles.dart';
 import '../../ui/auth/bottomsheet/forgot_password_bottom_sheet.dart';
 
-class EmailLoginScreen extends StatefulWidget {
-  const EmailLoginScreen({super.key});
+@RoutePage()
+class EmailLoginPage extends StatefulWidget {
+  const EmailLoginPage({super.key});
 
   @override
-  State<EmailLoginScreen> createState() => _EmailLoginScreenState();
+  State<EmailLoginPage> createState() => _EmailLoginState();
 }
 
-class _EmailLoginScreenState extends State<EmailLoginScreen> {
+class _EmailLoginState extends State<EmailLoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final ValueNotifier<bool> passwordToggleNotifier = ValueNotifier(false);
@@ -182,11 +184,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
           ],
         ),
         GestureDetector(
-          onTap: () => {
-
-
-
-          },
+          onTap: () => {},
           child: _buildButton(),
         )
       ],

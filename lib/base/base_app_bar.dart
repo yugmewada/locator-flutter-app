@@ -64,7 +64,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
                 widget.title!,
                 style: TextStyles.mediumColorDarkBlue16(),
               ),
-      backgroundColor: widget.backgroundColor ?? AppColor.colorWhite,
+      backgroundColor: widget.backgroundColor ?? AppColor.colorScreenBg,
       elevation: widget.elevations,
       automaticallyImplyLeading: false,
       //brightness: Brightness.dark,

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:auto_route/annotations.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
@@ -8,19 +9,24 @@ import 'package:demo/theming/TextStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Common.dart';
 import '../../base/base_app_bar.dart';
 import '../../generated/assets.dart';
 import '../../utils/media_picker_bottomsheet.dart';
+import 'bottomsheet/auth_success_bottomsheet.dart';
 
-class CompleteProfileScreen extends StatefulWidget {
-  const CompleteProfileScreen({super.key});
+@RoutePage()
+class CompleteProfilePage extends StatefulWidget {
+  const CompleteProfilePage({super.key});
 
   @override
-  State<CompleteProfileScreen> createState() => _CompleteProfileScreenState();
+  State<CompleteProfilePage> createState() => _CompleteProfileState();
 }
 
-class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
+class _CompleteProfileState extends State<CompleteProfilePage> {
   final ValueNotifier<File?> _profileImageNotifier = ValueNotifier<File?>(null);
   TextEditingController nameController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
@@ -84,11 +90,22 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         _buildDivider(),
                         _buildAddressTextField(),
                         _buildDivider(),
-                        _buildCountryCode()
+                        _buildCountryCode(),
                       ],
                     ),
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                _buildSubmitButton(),
+                const SizedBox(
+                  height: 22,
+                ),
+                _buildSkipText(),
+                const SizedBox(
+                  height: 15,
+                ),
               ],
             ),
           ))
@@ -333,5 +350,70 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
         },
       ),
     );
+  }
+
+//------------------------------------------------------------------------------
+  //BOTTOM SECTION
+//------------------------------------------------------------------------------
+  Widget _buildSubmitButton() {
+    return GestureDetector(
+      onTap: () {
+        _showSuccessBottomSheet();
+      },
+      child: Container(
+        height: 52.h,
+        width: 170.h,
+        decoration: const BoxDecoration(
+            color: AppColor.colorDarkBlue,
+            borderRadius: BorderRadius.all(Radius.circular(26))),
+        child: Center(
+          child: Text(
+            "Submit",
+            style: TextStyles.mediumWhite16(),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSkipText() {
+    return GestureDetector(
+      onTap: () async {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool(Common.IS_LOGIN, true);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Common.homeScreenMain,
+          (Route<dynamic> route) => false,
+        );
+      },
+      child: Text(
+        "Skip",
+        style: TextStyles.mediumColorDarkBlue14(),
+      ),
+    );
+  }
+
+  void _showSuccessBottomSheet() {
+    showCupertinoModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        enableDrag: false,
+        builder: (context) {
+          return SizedBox(
+            height: 0.4.sh,
+            child: AuthSuccessBottomSheet(onContinueClick: () async {
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.setBool(Common.IS_LOGIN, true);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                Common.homeScreenMain,
+                (Route<dynamic> route) => false,
+              );
+            }),
+          );
+        },
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))));
   }
 }

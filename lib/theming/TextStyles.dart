@@ -35,6 +35,12 @@ class TextStyles {
         .copyWith(fontSize: 16.spMin);
   }
 
+  static TextStyle mediumColorGrey12() {
+    return mediumFont()
+        .copyWith(color: AppColor.colorGrey)
+        .copyWith(fontSize: 12.spMin);
+  }
+
   //Bold Font Styles
 
   static TextStyle boldFont() {

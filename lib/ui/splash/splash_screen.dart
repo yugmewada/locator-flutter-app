@@ -1,49 +1,54 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:demo/Common.dart';
 import 'package:demo/generated/assets.dart';
+import 'package:demo/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../theming/AppColor.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+@RoutePage()
+class SplashScreenPage extends StatefulWidget {
+  const SplashScreenPage({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreen();
-
+  State<SplashScreenPage> createState() => _SplashScreenPage();
 }
 
-late var isLanguageSelected;
-late var isWalk;
-
-class _SplashScreen extends State<SplashScreen> {
-
+class _SplashScreenPage extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
-
     _initializePreferences();
   }
 
   Future<void> _initializePreferences() async {
     final prefs = await SharedPreferences.getInstance();
 
-    final isLanguageSelected = prefs.getBool(Common.IS_LANGUAGE_SELECTED) ?? false;
+    final isLanguageSelected =
+        prefs.getBool(Common.IS_LANGUAGE_SELECTED) ?? false;
     final isWalk = prefs.getBool(Common.IS_WALK) ?? false;
+    final isLogin = prefs.getBool(Common.IS_LOGIN) ?? false;
 
     Future.delayed(const Duration(milliseconds: 2000), () {
       setState(() {
-        if (!isLanguageSelected) {
-          Navigator.of(context).popAndPushNamed("/language_selection");
-        } else if (!isWalk) {
-          Navigator.of(context).popAndPushNamed("/onboarding");
+        if (!isLogin) {
+          if (!isLanguageSelected) {
+            context.maybePop();
+            context.router.push(const SelectLanguageRoute());
+          } else if (!isWalk) {
+            context.maybePop();
+            context.router.push(const WalkthroughRoute());
+          } else {
+            context.maybePop();
+            context.router.push(const WelcomeRoute());
+          }
         } else {
-          Navigator.of(context).popAndPushNamed("/welcome");
+          Navigator.of(context).popAndPushNamed(Common.homeScreenMain);
         }
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {

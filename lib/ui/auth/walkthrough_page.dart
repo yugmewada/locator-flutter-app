@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:demo/Common.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
@@ -24,12 +25,15 @@ List<WalkThroughDataClass> pageList = [
 
 int currentPage = 0;
 
-class WalkthroughScreen extends StatefulWidget {
+@RoutePage()
+class WalkthroughPage extends StatefulWidget {
+  const WalkthroughPage({super.key});
+
   @override
-  State<StatefulWidget> createState() => _WalkthroughScreen();
+  State<StatefulWidget> createState() => _WalkthroughState();
 }
 
-class _WalkthroughScreen extends State<WalkthroughScreen> {
+class _WalkthroughState extends State<WalkthroughPage> {
   @override
   Widget build(BuildContext context) {
     final PageController pageViewController = PageController();

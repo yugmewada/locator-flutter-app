@@ -1,8 +1,8 @@
+import 'package:auto_route/annotations.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
 import 'package:demo/theming/AppColor.dart';
-import 'package:demo/ui/auth/bottomsheet/auth_success_bottomsheet.dart';
 import 'package:demo/ui/auth/bottomsheet/otp_verification_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,14 +12,15 @@ import '../../base/base_app_bar.dart';
 import '../../generated/assets.dart';
 import '../../theming/TextStyles.dart';
 
-class MobileLoginScreen extends StatefulWidget {
-  const MobileLoginScreen({super.key});
+@RoutePage()
+class MobileLoginPage extends StatefulWidget {
+  const MobileLoginPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _MobileLoginScreenState();
+  State<StatefulWidget> createState() => _MobileLoginState();
 }
 
-class _MobileLoginScreenState extends State<MobileLoginScreen> {
+class _MobileLoginState extends State<MobileLoginPage> {
   final ValueNotifier<String> selectedCountryCode =
       ValueNotifier<String>('India (+91)');
   ValueNotifier<Country> selectedCountryFlag =
@@ -203,9 +204,7 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
         return SizedBox(
           height: 0.55.sh,
           child: OtpVerificationBottomSheet(onOtpVerified: () {
-            Future.delayed(const Duration(milliseconds: 500), () {
-              _showSuccessBottomSheet();
-            });
+            Future.delayed(const Duration(milliseconds: 500), () {});
           }),
         );
       },
@@ -213,23 +212,6 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
     );
-  }
-
-  void _showSuccessBottomSheet() {
-    showCupertinoModalBottomSheet(
-        context: context,
-        isDismissible: false,
-        enableDrag: false,
-        builder: (context) {
-          return SizedBox(
-            height: 0.4.sh,
-            child: AuthSuccessBottomSheet(onContinueClick: () {
-              
-            }),
-          );
-        },
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20))));
   }
 
 //------------------------------------------------------------------------------

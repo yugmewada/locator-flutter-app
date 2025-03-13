@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_picker_dialog.dart';
 import 'package:country_pickers/utils/utils.dart';
@@ -10,14 +11,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CreateAccountScreen extends StatefulWidget {
-  const CreateAccountScreen({super.key});
+@RoutePage()
+class CreateAccountPage extends StatefulWidget {
+  const CreateAccountPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _CreateAccountScreen();
+  State<StatefulWidget> createState() => _CreateAccountState();
 }
 
-class _CreateAccountScreen extends State<CreateAccountScreen> {
+class _CreateAccountState extends State<CreateAccountPage> {
   bool showPassword = false;
   bool showConfirmPassword = false;
   bool isTermsCheck = false;

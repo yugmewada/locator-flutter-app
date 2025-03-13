@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:demo/Common.dart';
 import 'package:demo/generated/assets.dart';
 import 'package:demo/theming/AppColor.dart';
@@ -5,14 +6,15 @@ import 'package:demo/theming/TextStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+@RoutePage()
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
 
   @override
   State<StatefulWidget> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
